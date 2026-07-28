@@ -3,27 +3,40 @@ using UnityEngine;
 public class ThirdPersonCamera : MonoBehaviour
 {
     public Transform pivot;
-    public Transform model;
+    public PhysicsController physics;
 
     public float distance = 5f;
     public float height = 2f;
     public float smoothSpeed = 8f;
 
     public LayerMask collisionMask;
-    
+
+    private Vector3 lastMoveDirection = Vector3.forward;
 
     void LateUpdate()
     {
-        if (pivot == null || model == null) return;
+        if (pivot == null || physics == null) return;
+
+        Vector3 moveDirection = physics.GetMoveDirection();
+
+        if (moveDirection != Vector3.zero)
+        {
+            lastMoveDirection = moveDirection.normalized;
+        }
 
         Vector3 target = pivot.position + Vector3.up * height;
-        Vector3 back = -model.up;
 
-        Vector3 desiredPosition = target + back * distance;
+        Vector3 desiredPosition =
+            target - lastMoveDirection * distance;
 
         RaycastHit hit;
 
-        if (Physics.Linecast(target, desiredPosition, out hit, collisionMask))
+        if (Physics.Linecast(
+            target,
+            desiredPosition,
+            out hit,
+            collisionMask
+        ))
         {
             desiredPosition = hit.point + hit.normal * 0.2f;
         }
@@ -35,5 +48,21 @@ public class ThirdPersonCamera : MonoBehaviour
         );
 
         transform.LookAt(target);
+    }
+
+    public void SetTarget(
+        Transform newPivot,
+        PhysicsController newPhysics
+    )
+    {
+        pivot = newPivot;
+        physics = newPhysics;
+
+        Vector3 moveDirection = physics.GetMoveDirection();
+
+        if (moveDirection != Vector3.zero)
+        {
+            lastMoveDirection = moveDirection.normalized;
+        }
     }
 }

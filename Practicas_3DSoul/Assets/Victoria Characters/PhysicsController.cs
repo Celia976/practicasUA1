@@ -55,4 +55,9 @@ public class PhysicsController : MonoBehaviour
     {
         return isWalking;
     }
+
+    public Vector3 GetMoveDirection()
+    {
+        return moveInput;
+    }
 }
