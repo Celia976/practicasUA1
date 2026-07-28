@@ -9,6 +9,16 @@ public class PhysicsController : MonoBehaviour
     private Vector3 moveInput;
     private bool isWalking;
 
+    private Quaternion initialModelRotation;
+
+    void Start()
+    {
+        if (model != null)
+        {
+            initialModelRotation = model.rotation;
+        }
+    }
+
     void Update()
     {
         Debug.Log("Update Physics");
@@ -26,16 +36,13 @@ public class PhysicsController : MonoBehaviour
         if (isWalking && model != null)
         {
             Quaternion look = Quaternion.LookRotation(moveInput);
-            Quaternion offset = Quaternion.Euler(-90f, 0f, 0f);
 
             model.rotation = Quaternion.Slerp(
                 model.rotation,
-                look * offset,
+                look * initialModelRotation,
                 rotationSpeed * Time.deltaTime
             );
         }
-
-        
     }
 
     void FixedUpdate()
