@@ -41,7 +41,7 @@ public class PhysicsController : MonoBehaviour
     void FixedUpdate()
     {
         Debug.Log(moveInput);
-        transform.Translate(moveInput * speed * Time.fixedDeltaTime, Space.World);
+        transform.position += moveInput * speed * Time.fixedDeltaTime;
     }
 
     public bool IsWalking()

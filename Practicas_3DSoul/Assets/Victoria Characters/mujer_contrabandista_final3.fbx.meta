@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1395e1a1e493d4b44a2fa9dcd1b884fd
+guid: 30d7fb4a0e4ef344ba73808c53fc3948
 ModelImporter:
   serializedVersion: 24501
   internalIDToNameTable: []
@@ -32,7 +32,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle_MujerContrabandista
+      name: idle_mujerContrabandista
       takeName: Scene
       internalID: -623603649343465320
       firstFrame: 1
@@ -61,9 +61,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Walk_MujerContrabandista
+      name: Walk_mujerContrabandista
       takeName: Scene
-      internalID: -1609281748187839663
+      internalID: -8800838248204228948
       firstFrame: 60
       lastFrame: 96
       wrapMode: 0
