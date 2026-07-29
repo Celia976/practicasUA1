@@ -104,3 +104,7 @@ Practicas_3DSoul/[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
 # Auto-generated cache in Assets folder
 Practicas_3DSoul/[Aa]ssets/[Ss]ceneDependencyCache*
+
+# Texturas pesadas
+Practicas_3DSoul/Assets/Scenes/Stone Floor Textures/
+Practicas_3DSoul/Assets/Scenes/Stone Floor Textures.meta
